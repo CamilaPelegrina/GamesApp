@@ -8,7 +8,7 @@ import android.widget.TextView
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(R.style.AppTheme)
+        setTheme(R.style.Theme_GamesApp)
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -17,9 +17,9 @@ class LoginActivity : AppCompatActivity() {
             callMain()
         }
 
-       // findViewById<TextView>(R.id.txtRegister).setOnClickListener {
-          //  callCadastro()
-       // }
+        findViewById<TextView>(R.id.txtRegister).setOnClickListener {
+            callCadastro()
+        }
     }
 
     private fun callMain(){
@@ -27,8 +27,8 @@ class LoginActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    //private fun callCadastro(){
-       // val intent = Intent(this, RegisterActivity::class.java)
-      //  startActivity(intent)
-    //}
+    private fun callCadastro(){
+        val intent = Intent(this, RegisterActivity::class.java)
+        startActivity(intent)
+    }
 }

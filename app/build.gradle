@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'
 }
 
 android {
@@ -48,7 +49,7 @@ dependencies {
 
 
     //Biblioteca do meterial
-    implementation 'com.google.android.material:material:1.3.0-alpha04'
+    implementation 'com.google.android.material:material:1.3.0-rc01'
 
     //Bibliotecas Lifecycle
     def lifecycle_version = "2.2.0"

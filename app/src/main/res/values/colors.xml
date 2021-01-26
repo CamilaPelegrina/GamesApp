@@ -10,5 +10,5 @@
     <color name="dark_blue">#00162C</color>
     <color name="red">#EA2427</color>
     <color name="gray">#343F4B</color>
-    <color name="colorAccent">#FF5252</color>
+    <color name="AccentRed">#FF5252</color>
 </resources>
