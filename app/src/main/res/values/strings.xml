@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">GamesApp</string>
+    <string name="til_username">Email</string>
+    <string name="til_password">Password</string>
+    <string name="remember">Remember</string>
+    <string name="create_account">Create account</string>
+    <string name="btn_login">LOG IN</string>
+</resources>
