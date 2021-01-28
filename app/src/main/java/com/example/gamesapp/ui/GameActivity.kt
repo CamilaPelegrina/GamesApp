@@ -1,15 +1,31 @@
 package com.example.gamesapp.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
+import android.widget.TextView
 import com.example.gamesapp.R
+import kotlinx.android.synthetic.main.activity_game.*
+import kotlinx.android.synthetic.main.game_icon.view.*
 
 class GameActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
 
-        val itemClicked = intent.getIntExtra("game", 0)
+        val cover = intent.getIntExtra("cover", 0)
+        val title = intent.getStringExtra("title")
+        val year = intent.getStringExtra("year")
+        val overview = intent.getStringExtra("overview")
+
+        imgCover.setImageResource(cover)
+        txtTitle.text = title
+        txtYear.text = year
+        txtOverview.text = overview
+
+
     }
 }
 

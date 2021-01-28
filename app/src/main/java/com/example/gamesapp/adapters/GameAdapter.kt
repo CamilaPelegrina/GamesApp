@@ -1,22 +1,17 @@
 package com.example.gamesapp.adapters
 
-import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gamesapp.R
 import com.example.gamesapp.model.Game
 import com.example.gamesapp.model.OnGameClickListener
-import com.example.gamesapp.ui.GameActivity
-import com.example.gamesapp.ui.MainActivity
 import kotlinx.android.synthetic.main.game_icon.view.*
 
-class GameAdapter(private var listGames: ArrayList<Game>, private val onGameClickListener: OnGameClickListener) : RecyclerView.Adapter<GameAdapter.GameViewHolder>() {
+class GameAdapter(private var items: ArrayList<Game>, private val onGameClickListener: OnGameClickListener) : RecyclerView.Adapter<GameAdapter.GameViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameViewHolder {
 
@@ -29,25 +24,22 @@ class GameAdapter(private var listGames: ArrayList<Game>, private val onGameClic
 
     override fun onBindViewHolder(holder: GameViewHolder, position: Int) {
 
-        val game = listGames[position]
+        val game = items[position]
 
-        holder.GameCover.setImageResource(listGames[position].image)
-        holder.GameTitle.text = listGames[position].title
-        holder.GameYear.text = listGames[position].title
+        holder.GameCover.setImageResource(items[position].image)
+        holder.GameTitle.text = items[position].title
+        holder.GameYear.text = items[position].title
 
 
         holder.itemView.setOnClickListener {
-          // mContext.startActivity(Intent(mContext, GameActivity::class.java))
 
             onGameClickListener.onGameItemClicked(position)
 
-          // val intent = Intent(this, GameActivity::class.java)
-            //startActivityForResult(intent)
         }
     }
 
     override fun getItemCount(): Int {
-        return listGames.size
+        return items.size
     }
 
    // fun addGame(list: ArrayList<Game>) {

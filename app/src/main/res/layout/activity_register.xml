@@ -100,7 +100,7 @@
                 android:layout_marginLeft="23dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginRight="23dp"
-                android:background="@drawable/login_button"
+                android:backgroundTint="@color/AccentRed"
                 android:text="@string/register"
                 android:textStyle="bold" />
 
