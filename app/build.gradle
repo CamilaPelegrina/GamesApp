@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-android-extensions'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -99,4 +100,5 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.google.firebase:firebase-firestore-ktx:22.0.1'
     implementation 'com.google.firebase:firebase-firestore:22.0.1'
+
 }

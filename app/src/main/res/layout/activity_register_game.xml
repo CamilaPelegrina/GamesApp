@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/background"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,102 +8,101 @@
     android:layout_height="match_parent"
     android:background="@drawable/splash">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="338dp"
-        android:backgroundTint="@color/AccentRed"
-        android:scaleType="center"
-        android:src="@drawable/ic_baseline_image_50"
-        app:fabCustomSize="80dp"
-        app:layout_constraintBottom_toBottomOf="@+id/cardView"
-        app:layout_constraintEnd_toEndOf="@+id/cardView"
-        app:layout_constraintStart_toStartOf="@+id/cardView"
-        app:maxImageSize="45dp" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:elevation="10dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="338dp"
+            android:background="@drawable/ic_baseline_play_circle_filled_24"
+            android:scaleType="center"
+            android:src="@drawable/ic_baseline_image_50"
+            app:layout_constraintBottom_toBottomOf="@+id/cardView"
+            app:layout_constraintEnd_toEndOf="@+id/cardView"
+            app:layout_constraintStart_toStartOf="@+id/cardView" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="match_parent"
-        android:layout_height="380dp"
-        android:layout_marginStart="23dp"
-        android:layout_marginEnd="23dp"
-        android:gravity="center_vertical"
-        app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="380dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginEnd="23dp"
+            android:gravity="center_vertical"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.textfield.TextInputLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                tools:ignore="MissingClass">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edUserName"
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginEnd="15dp"
-                    android:backgroundTint="@color/white"
-                    android:hint="Title" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginTop="50dp"
+                    tools:ignore="MissingClass">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                tools:ignore="MissingClass">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edPassword"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edUserName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:backgroundTint="@color/white"
+                        android:hint="Title" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginEnd="15dp"
-                    android:backgroundTint="@color/white"
-                    android:hint="Release year" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginTop="15dp"
+                    tools:ignore="MissingClass">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_marginTop="15dp"
-                tools:ignore="MissingClass">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:backgroundTint="@color/white"
+                        android:hint="Release year" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edPassword"
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginEnd="15dp"
-                    android:backgroundTint="@color/white"
-                    android:hint="@string/description" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginTop="15dp"
+                    tools:ignore="MissingClass">
 
-            <Button
-                android:id="@+id/btnLogin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="23dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginRight="23dp"
-                android:backgroundTint="@color/AccentRed"
-                android:text="Save Game"
-                android:textStyle="bold" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:backgroundTint="@color/white"
+                        android:hint="@string/description" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/btnLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="23dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginRight="23dp"
+                    android:backgroundTint="@color/AccentRed"
+                    android:text="Save Game"
+                    android:textStyle="bold" />
 
 
-        </LinearLayout>
+            </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
