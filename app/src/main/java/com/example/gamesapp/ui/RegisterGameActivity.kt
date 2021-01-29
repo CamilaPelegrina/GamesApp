@@ -49,6 +49,7 @@ class RegisterGameActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if(requestCode == CODE_IMG){
+            alertDialog.show()
             val uploadTask = storageReference.putFile(data!!.data!!)
             val task = uploadTask.continueWithTask { task ->
                 if (task.isSuccessful) {
