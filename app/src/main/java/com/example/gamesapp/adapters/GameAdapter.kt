@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.gamesapp.R
 import com.example.gamesapp.model.Game
 import com.example.gamesapp.model.OnGameClickListener
@@ -26,7 +27,8 @@ class GameAdapter(private var items: ArrayList<Game>, private val onGameClickLis
 
         val game = items[position]
 
-        holder.GameCover.setImageResource(items[position].image)
+//        holder.GameCover.setImageResource(items[position].image)
+        Glide.with(holder.itemView).load(game.image.toString()).into(holder.GameCover)
         holder.GameTitle.text = items[position].title
         holder.GameYear.text = items[position].title
 
@@ -42,10 +44,10 @@ class GameAdapter(private var items: ArrayList<Game>, private val onGameClickLis
         return items.size
     }
 
-   // fun addGame(list: ArrayList<Game>) {
-       // listGames.addAll(list)
-       // notifyDataSetChanged()
-    //}
+//    fun addGame(list: ArrayList<Game>) {
+//        items.addAll(list)
+//        notifyDataSetChanged()
+//    }
 
     inner class GameViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 

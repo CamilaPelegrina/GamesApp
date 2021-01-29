@@ -1,17 +1,19 @@
 package com.example.gamesapp.ui
 
 import android.content.Intent
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
-import android.widget.Toast
+import android.util.Log
+import androidx.activity.viewModels
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.gamesapp.R
 import com.example.gamesapp.adapters.GameAdapter
 import com.example.gamesapp.model.Game
 import com.example.gamesapp.model.OnGameClickListener
+import com.example.gamesapp.model.RegisterViewModel
+import com.example.gamesapp.model.RepositoryDatabase
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -19,16 +21,21 @@ class MainActivity : AppCompatActivity(), OnGameClickListener {
     //lateinit var gameAdapter: GameAdapter
     lateinit var items: ArrayList<Game>
 
+    private val repository = RepositoryDatabase()
+    private val viewModel by viewModels<RegisterViewModel> {
+        object : ViewModelProvider.Factory {
+            override fun <VM : ViewModel?> create(modelClass: Class<VM>): VM {
+                return RegisterViewModel(repository) as VM
+            }
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        items = arrayListOf(
-            Game(R.drawable.splash, "HADES", "2020","TESTE"),
-            Game(R.drawable.splash, "FALL", "2020","TESTE"),
-            Game(R.drawable.splash, "STARDEW", "2015","TESTE"),
-        )
+        var items = arrayListOf<Game>()
 
         var gameAdapter = GameAdapter(items, this)
         //gameAdapter = GameAdapter(this)
@@ -45,6 +52,22 @@ class MainActivity : AppCompatActivity(), OnGameClickListener {
             callRegisterGame()
         }
 
+    }
+
+    fun addItem(list: ArrayList<Game>) {
+        items.clear()
+        items.addAll(list)
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        viewModel.connectDatabase()
+        viewModel.getAllGamesDatabase()
+        viewModel.listGames.observe(this) {
+            addItem(it)
+            Log.i("Games", it.toString())
+        }
     }
 
     override fun onGameItemClicked(position: Int) {

@@ -48,7 +48,7 @@
 
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edUserName"
+                        android:id="@+id/edTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
@@ -64,7 +64,7 @@
                     tools:ignore="MissingClass">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edPassword"
+                        android:id="@+id/edYear"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
@@ -80,7 +80,7 @@
                     tools:ignore="MissingClass">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edPassword"
+                        android:id="@+id/edOverview"
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
                         android:layout_marginStart="15dp"
@@ -90,7 +90,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
-                    android:id="@+id/btnLogin"
+                    android:id="@+id/btnSave"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="23dp"
