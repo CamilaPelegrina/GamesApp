@@ -12,7 +12,9 @@ import com.example.gamesapp.model.Game
 import com.example.gamesapp.model.OnGameClickListener
 import kotlinx.android.synthetic.main.game_icon.view.*
 
-class GameAdapter(private var items: ArrayList<Game>, private val onGameClickListener: OnGameClickListener) : RecyclerView.Adapter<GameAdapter.GameViewHolder>() {
+class GameAdapter(private val onGameClickListener: OnGameClickListener) : RecyclerView.Adapter<GameAdapter.GameViewHolder>() {
+
+    var items = arrayListOf<Game>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameViewHolder {
 
@@ -20,6 +22,12 @@ class GameAdapter(private var items: ArrayList<Game>, private val onGameClickLis
                 LayoutInflater.from(parent.context).inflate(R.layout.game_icon, parent, false)
 
         return GameViewHolder(view)
+    }
+
+    fun addGame(list: ArrayList<Game>) {
+        items.clear()
+        items.addAll(list)
+        notifyDataSetChanged()
     }
 
 
@@ -44,17 +52,11 @@ class GameAdapter(private var items: ArrayList<Game>, private val onGameClickLis
         return items.size
     }
 
-//    fun addGame(list: ArrayList<Game>) {
-//        items.addAll(list)
-//        notifyDataSetChanged()
-//    }
-
     inner class GameViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         var GameCover: ImageView = itemView.imgCover
         var GameTitle: TextView = itemView.txtTitle
         var GameYear: TextView = itemView.txtYear
-
 
     }
 

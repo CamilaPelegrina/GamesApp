@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.gamesapp.R
 import com.example.gamesapp.adapters.GameAdapter
-import com.example.gamesapp.model.Game
 import com.example.gamesapp.model.OnGameClickListener
 import com.example.gamesapp.model.RegisterViewModel
 import com.example.gamesapp.model.RepositoryDatabase
@@ -18,8 +17,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), OnGameClickListener {
-    //lateinit var gameAdapter: GameAdapter
-    lateinit var items: ArrayList<Game>
+    lateinit var gameAdapter: GameAdapter
+//    lateinit var items: ArrayList<Game>
 
     private val repository = RepositoryDatabase()
     private val viewModel by viewModels<RegisterViewModel> {
@@ -30,20 +29,31 @@ class MainActivity : AppCompatActivity(), OnGameClickListener {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        viewModel.connectDatabase()
+        viewModel.getAllGamesDatabase()
+        viewModel.items.observe(this) {
+            gameAdapter.addGame(it)
+            Log.i("Games", it.toString())
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var items = arrayListOf<Game>()
+//        var items = arrayListOf<Game>()
 
-        var gameAdapter = GameAdapter(items, this)
+        gameAdapter = GameAdapter(this)
         //gameAdapter = GameAdapter(this)
         rv_recyclerHome.adapter = gameAdapter
         rv_recyclerHome.apply {
             layoutManager = GridLayoutManager(context, 2)
         }
-        gameAdapter.notifyDataSetChanged()
+        rv_recyclerHome.hasFixedSize()
 
 
         //gameAdapter.addGame(items)
@@ -54,28 +64,18 @@ class MainActivity : AppCompatActivity(), OnGameClickListener {
 
     }
 
-    fun addItem(list: ArrayList<Game>) {
-        items.clear()
-        items.addAll(list)
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        viewModel.connectDatabase()
-        viewModel.getAllGamesDatabase()
-        viewModel.listGames.observe(this) {
-            addItem(it)
-            Log.i("Games", it.toString())
-        }
-    }
+//    fun addItem(list: ArrayList<Game>) {
+//        items.clear()
+//        items.addAll(list)
+//    }
 
     override fun onGameItemClicked(position: Int) {
+        val game = gameAdapter.items[position]
         val intent = Intent(this, GameActivity::class.java)
-        intent.putExtra("cover", items[position].image)
-        intent.putExtra("title", items[position].title)
-        intent.putExtra("year", items[position].year)
-        intent.putExtra("overview", items[position].overview)
+        intent.putExtra("cover", game.image)
+        intent.putExtra("title", game.title)
+        intent.putExtra("year", game.year)
+        intent.putExtra("overview", game.overview)
         startActivity(intent)
     }
 

@@ -11,7 +11,7 @@ import com.google.firebase.storage.StorageReference
 import kotlinx.coroutines.launch
 
 class RegisterViewModel(val repository: Repository) : ViewModel() {
-    val listGames = MutableLiveData<ArrayList<Game>>()
+    val items = MutableLiveData<ArrayList<Game>>()
     val storageReference = MutableLiveData<StorageReference>()
 
     fun connectDatabase() {
@@ -44,7 +44,7 @@ class RegisterViewModel(val repository: Repository) : ViewModel() {
                         val game = it.getValue(Game::class.java)
                         listGamesDatabase.add(game!!)
                     }
-                    listGames.value = listGamesDatabase
+                    items.value = listGamesDatabase
                 }
 
                 override fun onCancelled(error: DatabaseError) {

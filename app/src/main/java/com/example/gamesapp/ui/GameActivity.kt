@@ -16,7 +16,7 @@ class GameActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
 
-        val cover = intent.getIntExtra("cover", 0)
+        val cover = intent.getStringExtra("cover")
         val title = intent.getStringExtra("title")
         val year = intent.getStringExtra("year")
         val overview = intent.getStringExtra("overview")
