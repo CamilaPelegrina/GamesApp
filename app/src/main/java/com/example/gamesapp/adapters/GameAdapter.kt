@@ -38,7 +38,7 @@ class GameAdapter(private val onGameClickListener: OnGameClickListener) : Recycl
 //        holder.GameCover.setImageResource(items[position].image)
         Glide.with(holder.itemView).load(game.image.toString()).into(holder.GameCover)
         holder.GameTitle.text = items[position].title
-        holder.GameYear.text = items[position].title
+        holder.GameYear.text = items[position].year
 
 
         holder.itemView.setOnClickListener {
