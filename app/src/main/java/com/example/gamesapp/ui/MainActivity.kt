@@ -18,8 +18,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), OnGameClickListener {
     lateinit var gameAdapter: GameAdapter
-//    lateinit var items: ArrayList<Game>
-
     private val repository = RepositoryDatabase()
     private val viewModel by viewModels<RegisterViewModel> {
         object : ViewModelProvider.Factory {
@@ -45,7 +43,6 @@ class MainActivity : AppCompatActivity(), OnGameClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        var items = arrayListOf<Game>()
 
         gameAdapter = GameAdapter(this)
         //gameAdapter = GameAdapter(this)
@@ -56,18 +53,12 @@ class MainActivity : AppCompatActivity(), OnGameClickListener {
         rv_recyclerHome.hasFixedSize()
 
 
-        //gameAdapter.addGame(items)
-
         findViewById<FloatingActionButton>(R.id.floatingActionButton).setOnClickListener{
             callRegisterGame()
         }
 
     }
 
-//    fun addItem(list: ArrayList<Game>) {
-//        items.clear()
-//        items.addAll(list)
-//    }
 
     override fun onGameItemClicked(position: Int) {
         val game = gameAdapter.items[position]
